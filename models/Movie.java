@@ -22,7 +22,11 @@ public class Movie {
             throw new IllegalArgumentException("rating must be between 0 and 10");
         }
         this.name = name;
-        this.format = format;
+        if (format.equalsIgnoreCase("Blue-Ray")) {
+            this.format = "Blue-Ray";
+        } else if (format.equalsIgnoreCase("DVD")) {
+            this.format = "DVD";
+        }
         this.rating = rating;
         this.sellingPrice = sellingPrice;
         this.rentalPrice = rentalPrice;
@@ -60,7 +64,11 @@ public class Movie {
         if (format == null || format.isBlank()) {
             throw new IllegalArgumentException("format cannot be null/blank");
         }
-        this.format = format;
+        if (format.equalsIgnoreCase("Blue-Ray")) {
+            this.format = "Blue-Ray";
+        } else if (format.equalsIgnoreCase("DVD")) {
+            this.format = "DVD";
+        }
     }
 
     public double getRating() {

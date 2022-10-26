@@ -29,6 +29,15 @@ public class Movie {
         this.isAvailable = isAvailable;
     }
 
+    public Movie(Movie source) {
+        this.name = source.name;
+        this.format = source.format;
+        this.rating = source.rating;
+        this.sellingPrice = source.sellingPrice;
+        this.rentalPrice = source.rentalPrice;
+        this.isAvailable = source.isAvailable;
+    }
+
     public String getName() {
         return name;
     }

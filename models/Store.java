@@ -35,4 +35,12 @@ public class Store {
         }
     }
 
+    public String toString() {
+        String temp = "";
+        for (int i = 0; i < movies.size(); i++) {
+            temp += movies.get(i) + "\n\n";
+        }
+        return temp;
+    }
+
 }

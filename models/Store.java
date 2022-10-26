@@ -17,5 +17,22 @@ public class Store {
         movies.set(index, new Movie(movie));
     }
 
-    
+    public void addMovie(Movie movie) {
+        movies.add(new Movie(movie));
+    }
+
+    public void action(String movieName, String action) {
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getName().equals(movieName)) {
+                switch (action) {
+                    case "sell": movies.remove(i); break;
+                    case "rent": movies.get(i).setAvailable(false); break;
+                    case "return": movies.get(i).setAvailable(true); break;
+                    default: break;
+                }
+
+            }
+        }
+    }
+
 }

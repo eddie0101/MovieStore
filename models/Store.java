@@ -36,10 +36,11 @@ public class Store {
     }
 
     public String toString() {
-        String temp = "";
+        String temp = "\n********** JAVA VIDEO STORE **********\n\n";
         for (int i = 0; i < movies.size(); i++) {
-            temp += movies.get(i) + "\n\n";
+            temp += movies.get(i) + "\n";
         }
+        temp += "********** JAVA VIDEO STORE **********\n";
         return temp;
     }
 

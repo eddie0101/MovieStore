@@ -8,7 +8,7 @@ public class Movie {
     private double rentalPrice;
     private boolean isAvailable;
 
-    public Movie(String name, String format, double rating, double sellingPrice, double rentalPrice, boolean isAvailable) {
+    public Movie(String name, String format, double rating) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null/blank");
         }
@@ -28,9 +28,9 @@ public class Movie {
             this.format = "DVD";
         }
         this.rating = rating;
-        this.sellingPrice = sellingPrice;
-        this.rentalPrice = rentalPrice;
-        this.isAvailable = isAvailable;
+        this.sellingPrice = format.equalsIgnoreCase("Blue-Ray") ? 4.99 : 2.79;
+        this.rentalPrice = format.equalsIgnoreCase("Blue-Ray") ? 1.99 : 0.79;
+        this.isAvailable = true;
     }
 
     public Movie(Movie source) {
@@ -66,8 +66,12 @@ public class Movie {
         }
         if (format.equalsIgnoreCase("Blue-Ray")) {
             this.format = "Blue-Ray";
+            setSellingPrice(4.99);
+            setRentalPrice(1.99);
         } else if (format.equalsIgnoreCase("DVD")) {
             this.format = "DVD";
+            setSellingPrice(2.79);
+            setRentalPrice(0.79);
         }
     }
 

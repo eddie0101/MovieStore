@@ -1,6 +1,5 @@
 package models;
 
-import java.nio.channels.IllegalSelectorException;
 import java.util.ArrayList;
 
 public class Store {
@@ -22,7 +21,19 @@ public class Store {
         movies.add(new Movie(movie));
     }
 
-    public void action(String movieName, String action) {
+    public void sellMovie(String movieName) {
+        action(movieName, "sell");
+    }
+
+    public void rentMovie(String movieName) {
+        action(movieName, "rent");
+    }
+
+    public void returnMovie(String movieName) {
+        action(movieName, "return");
+    }
+
+    private void action(String movieName, String action) {
         if (movies.isEmpty()) {
             throw new IllegalStateException("Empty store");
         }
@@ -33,9 +44,9 @@ public class Store {
                         throw new IllegalStateException("cannot sell a rented movie");
                     }
                     movies.remove(i);
-                } else if (action.equalsIgnoreCase("rent") {
+                } else if (action.equalsIgnoreCase("rent")) {
                     movies.get(i).setAvailable(false);
-                } else if (action.equalsIgnoreCase("return") {
+                } else if (action.equalsIgnoreCase("return")) {
                     movies.get(i).setAvailable(true);
                 } else {
                     throw new IllegalArgumentException("action must be 'sell'/'rent'/'return'");

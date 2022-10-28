@@ -20,12 +20,8 @@ public class Main {
             System.out.println("Process Complete");
         }
         System.out.println(store);
-        // store.action("Avatar", "sell");
-        // System.out.println(store);
-        // store.action("Drive", "rent");
-        // System.out.println(store);
-        // store.action("Drive", "return");
-        // System.out.println(store);
+
+        manageMovies();
     }
 
     public static void loadMovies(String fileName) throws FileNotFoundException{
@@ -35,6 +31,32 @@ public class Main {
         while (scan.hasNextLine()) {
             data = scan.nextLine().split("--");
             store.addMovie(new Movie(data[0], data[1], Double.parseDouble(data[2])));
+        }
+        scan.close();
+    }
+
+    public static void manageMovies() {
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nWould you like to \n\ta) purchase\n\tb) rent \n\tc) return \n\td) exit");
+            String input = scan.nextLine();
+            if (input.equalsIgnoreCase("a")) {
+                System.out.print("\nEnter the name of the movie: ");
+                String movieName = scan.nextLine();
+                store.sellMovie(movieName);
+            } else if (input.equalsIgnoreCase("b")) {
+                System.out.print("\nEnter the name of the movie: ");
+                String movieName = scan.nextLine();
+                store.rentMovie(movieName);
+            } else if (input.equalsIgnoreCase("c")) {
+                System.out.print("\nEnter the name of the movie: ");
+                String movieName = scan.nextLine();
+                store.returnMovie(movieName);
+            } else if (input.equalsIgnoreCase("d")) {
+                break;
+            }
+            System.out.println(store);
         }
         scan.close();
     }

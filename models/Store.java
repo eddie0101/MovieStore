@@ -13,6 +13,15 @@ public class Store {
         return new Movie(movies.get(index));
     }
 
+    public Movie getMovie(String movieName) {
+        for (int i = 0; i < movies.size(); i++) {
+            if (movieName.equalsIgnoreCase(movies.get(i).getName())) {
+                return new Movie(movies.get(i));
+            }
+        }
+        return null;
+    }
+
     public void setMovie(Movie movie, int index) {
         movies.set(index, new Movie(movie));
     }
@@ -36,6 +45,9 @@ public class Store {
     private void action(String movieName, String action) {
         if (movies.isEmpty()) {
             throw new IllegalStateException("Empty store");
+        }
+        if (movieName == null || movieName.isBlank()) {
+            throw new IllegalArgumentException("movie name cannot be null/blank");
         }
         for (int i = 0; i < movies.size(); i++) {
             if (movies.get(i).getName().equals(movieName)) {

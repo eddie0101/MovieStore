@@ -16,9 +16,10 @@ public class Main {
             System.out.println("MOVIES LOADED");
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        } finally {
-            System.out.println("Process Complete");
         }
+        // } finally {
+        //     System.out.println("Process Complete");
+        // }
         System.out.println(store);
 
         manageMovies();
@@ -41,22 +42,31 @@ public class Main {
         while (true) {
             System.out.println("\nWould you like to \n\ta) purchase\n\tb) rent \n\tc) return \n\td) exit");
             String input = scan.nextLine();
-            if (input.equalsIgnoreCase("a")) {
-                System.out.print("\nEnter the name of the movie: ");
-                String movieName = scan.nextLine();
-                store.sellMovie(movieName);
-            } else if (input.equalsIgnoreCase("b")) {
-                System.out.print("\nEnter the name of the movie: ");
-                String movieName = scan.nextLine();
-                store.rentMovie(movieName);
-            } else if (input.equalsIgnoreCase("c")) {
-                System.out.print("\nEnter the name of the movie: ");
-                String movieName = scan.nextLine();
-                store.returnMovie(movieName);
-            } else if (input.equalsIgnoreCase("d")) {
+            if (input.equalsIgnoreCase("d")) {
                 break;
+            } else if (input.equalsIgnoreCase("a") || input.equalsIgnoreCase("b") || input.equalsIgnoreCase("c")) {
+                System.out.print("\nEnter the name of the movie: ");
+                String movieName = scan.nextLine();
+                if (movieName == null || movieName.isBlank()) {
+                    System.out.println("\n\nThe input you provided is not valid. Please try again.\n");
+                } else {
+                    if (input.equalsIgnoreCase("a")) {
+                        if (!store.getMovie(movieName).isAvailable()) {
+                            System.out.println("\n\nThe movie is not available for purchase. Please try again.\n");
+                            continue;
+                        }
+                        store.sellMovie(movieName);
+                    } else if (input.equalsIgnoreCase("b")) {
+                        store.rentMovie(movieName);
+                    } else if (input.equalsIgnoreCase("c")) {
+                        store.returnMovie(movieName);
+                    }
+                    System.out.println(store);
+                }
+            } else {
+                System.out.println("\n\nThe input you provided is not valid. Please try again.\n");
             }
-            System.out.println(store);
+
         }
         scan.close();
     }

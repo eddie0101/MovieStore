@@ -30,6 +30,10 @@ public class Store {
         movies.add(new Movie(movie));
     }
 
+    public boolean contains(Movie movie) {
+        return movies.contains(movie);
+    }
+
     public void sellMovie(String movieName) {
         action(movieName, "sell");
     }

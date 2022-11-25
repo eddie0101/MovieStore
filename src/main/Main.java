@@ -1,9 +1,10 @@
+package src.main;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import models.Movie;
-import models.Store;
+import src.main.models.Movie;
+import src.main.models.Store;
 
 public class Main {
 

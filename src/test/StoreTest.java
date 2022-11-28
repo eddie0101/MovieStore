@@ -23,4 +23,10 @@ public class StoreTest {
         assertTrue(store.contains(new Movie("The Shawshank Redemption", "Blue-Ray", 9.2)));
     }
     
+    @Test
+    public void sellMovieTest() {
+        store.sellMovie("The Shawshank Redemption");
+        assertFalse(store.contains(new Movie("The Shawshank Redemption", "Blue-Ray", 9.2)));
+    }
+
 }

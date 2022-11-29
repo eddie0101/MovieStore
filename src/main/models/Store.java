@@ -34,6 +34,12 @@ public class Store {
         return movies.contains(movie);
     }
 
+    private int getMovieIndex(String name) {
+        return IntStream.range(0, movies.size())
+                .filter(i -> movies.get(i).getName().equals(name))
+                .findFirst()
+                .orElse(-1);
+    }
     public void sellMovie(String movieName) {
         action(movieName, "sell");
     }

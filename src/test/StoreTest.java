@@ -23,7 +23,7 @@ public class StoreTest {
     public void movieAdded() {
         assertTrue(store.contains(new Movie("The Shawshank Redemption", "Blue-Ray", 9.2)));
     }
-    
+
     @Test
     public void sellMovieTest() {
         store.sellMovie("The Shawshank Redemption");
@@ -34,5 +34,11 @@ public class StoreTest {
     public void rentMovieTest() {
         store.rentMovie("The Godfather");
         assertFalse(store.getMovie(1).isAvailable());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void movieNotInStock() {
+        store.rentMovie("The Godfather");
+        store.sellMovie("The Godfather");
     }
 }

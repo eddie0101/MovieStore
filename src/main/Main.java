@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            loadMovies("movies.txt");
+            loadMovies("src/main/movies.txt");
             System.out.println("MOVIES LOADED");
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
